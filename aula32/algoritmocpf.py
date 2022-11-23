@@ -21,9 +21,9 @@ Pegamos o resultado obtido 204 e dividimos por 11.  Consideramos como quociente 
 """
 
 print('ALGORITMO PARA VERIFICAÇÃO DE CPF:\n')
-cpf = input('Digite aqui um CPF:\n')
+cpf = input('Digite aqui um CPF:\n').replace('.', '').replace('-', '')
 while len(cpf) < 11:
-    cpf = input('CPF inválido, tente novamente:\n')
+    cpf = input('CPF inválido, tente novamente:\n').replace('.', '').replace('-', '')
 
 nove_digitos = cpf[:9]
 contador_regressivo = 10
@@ -35,10 +35,6 @@ for digito in nove_digitos:
 
 digito = resultado * 10 % 11
 digito = digito if digito <= 9 else 0
-print('PRIMEIRO DIGITO:')
-print(digito)
-
-print('SEGUNDO DIGITO:')
 
 nove_digitos2 = nove_digitos + str(digito)
 contador_regressivo2 = 11
@@ -50,7 +46,6 @@ for digito2 in nove_digitos2:
 
 digito2 = resultado2 * 10 % 11
 digito2 = digito2 if digito2 <= 9 else 0
-print(digito2)
 
 novocpf = f'{nove_digitos}{digito}{digito2}'
 if novocpf == cpf:
